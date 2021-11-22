@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Account Summary</title>
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+  </head>
+
+  <body>
+    <h1>RichGuysBank</h1>
+    <ul class="navigation">
+      <li class="active">Accounts</li>
+      <li>Bill Payments</li>
+      <li>Transfers</li>
+    </ul>
+    <div id="container">
+      <div id="middle-container">
+        <div class="accounts">
+          <h2>Banking</h2>
+          <table>
+            <tr>
+              <th>Account</th>
+              <th class="balance">Balance $</th>
+            </tr>
+            <tr>
+              <td>Basic Chequing - ********4444</td>
+              <td class="balance">5,000.00</td>
+            </tr>
+            <tr>
+              <td>Savings - ********5555</td>
+              <td class="balance">100,000.00</td>
+            </tr>
+            <tr>
+              <td style="text-align: right;">Total Banking Balance</td>
+              <td class="balance">$105,000.00</td>
+            </tr>
+          </table>
+        </div>
+        <div class="accounts">
+          <h2>Borrowing</h2>
+          <table>
+            <tr>
+              <th>Account</th>
+              <th class="balance">Balance $</th>
+            </tr>
+            <tr>
+              <td>Credit Card - ********6666</td>
+              <td class="balance">0.00</td>
+            </tr>
+            <tr>
+              <td style="text-align: right;">Total Borrowing</td>
+              <td class="balance">$0.00</td>
+            </tr>
+          </table>
+        </div>
+        <div id="widget-container"></div>
+      </div>
+      <div id="right-container">
+        <div class="note">
+          <p>Messages</p>
+          <ul>
+            <li>Check out our rewards program</li>
+            <li>New statement available</li>
+          </ul>
+        </div>
+        <div class="note">
+          <p>Manage My Accounts</p>
+          <ul>
+            <li>Change address - banking</li>
+            <li>Account settings</li>
+            <li>Manage recordkeeping</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React component. -->
+    //
+    <script src="widget/widget.js" type="text/babel"></script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
