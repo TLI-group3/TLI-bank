@@ -10,10 +10,5 @@ The mock banking page is designed to be hosted locally, as it's only intended to
 - In the main directory, run `npm install` (for Windows) or `sudo npm install` (for linux/mac). (If there is an error, try deleteing `package-lock.json` and `yarn.lock`)
 - Run the `index.html` file under `/dist` in your browser.
 
-
-## How to Run the Bank Agent's View Locally
-
-- Type `npm start` (Windows) or `sudo npm start` (for linux/mac) to activate TLI-bank (the frontend) locally
-
 ## Running Tests
 - Type `yarn test` into the console to run the test files.
