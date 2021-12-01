@@ -17,6 +17,7 @@ class Carousels extends React.Component {
           title={this.props.title[i]}
           description={this.props.description[i]}
           src={this.props.src[i]}
+          loading={this.props.loading}
         />
       );
     }
@@ -56,7 +57,7 @@ class Carousels extends React.Component {
               min: 1700
             },
             items: 1,
-            paritialVisibilityGutter: 30
+            partialVisibilityGutter: 30
           },
           tablet: {
             breakpoint: {
@@ -64,7 +65,7 @@ class Carousels extends React.Component {
               min: 464
             },
             items: 1,
-            paritialVisibilityGutter: 30
+            partialVisibilityGutter: 30
           }
         }}
         showDots={false}
