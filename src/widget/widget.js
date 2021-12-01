@@ -22,24 +22,22 @@ export class Widget extends React.Component {
       loading: false,
     };
   }
-  //componentDidMount() {
-  // this.getCars();
-  //}
 
-  getCars = () => {
-    const params = "1402110922112412";
+  getCar = () => {
     const requestOptions = {
-      method: "POST",
-      body: params
+      method: "PUT",
+      body: {"clientIDs":"1402110922112412", "tradeInCar": "2018 Ford Focus"}
     };
 
 
 
-    fetch("https://cb.caravantage.tech/cars", requestOptions)
+    fetch("https://cb.caravantage.tech/generateCars", requestOptions)
       // Handle success
       .then((response) => response.json()) // convert to json
       .then((json) => {
-        this.setState({ carsJSON: json.cars});
+        this.setState({ carsJSON: json.keys});
+          console.log("Car's fetched, loading unto widget")
+          console.log(this.state.carsJSON)
         this.loadCar();
       })
       .catch((err) => console.log("Request Failed", err)); // Catch errors
@@ -60,7 +58,7 @@ export class Widget extends React.Component {
 
   handleClick =() => {
       console.log("Waiting on cars");
-      this.getCars();
+      this.getCar();
       this.updateLoaded();
       this.updateItems(3);
       setTimeout(() => {
@@ -90,24 +88,24 @@ export class Widget extends React.Component {
             style={{ width: 100 }}
             loading={this.state.loading}
           />
-            <div>
+            <div style={{ margin: "10%" }}>
                 <Input placeholder="Trade In Car" />
             </div>
           <div style={{ margin: "10%" }}>
-            <button
+            <Button type="primary"
                 onClick={() => {
                   this.handleClick();
                 }}
             >
               Find your Cars!!!
-            </button>
-            <button
+            </Button>
+            <Button type="primary"
                 onClick={() => {
                   this.updateItems(0);
                 }}
             >
               Reset
-            </button>
+            </Button>
           </div>
         </div>
     );

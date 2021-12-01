@@ -9,7 +9,6 @@ const CustomCard = (props) => {
       hoverable={true}
       bordered={false}
       loading={props.loading}
-      style={{ width: 300 }}
     >
       <Meta title={props.title} description={props.description} />
     </Card>
