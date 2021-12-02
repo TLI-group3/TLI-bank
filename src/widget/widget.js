@@ -78,6 +78,15 @@ export class Widget extends React.Component {
     this.setState({
       items: val
     });
+    if(val===0){
+        this.setState({
+            titles: ["Check your cars"],
+            descriptions: ["Do you want a new car?"],
+            src: [
+                "https://www.generatormix.com/images/thumbs/random-car-model-generator.jpg"
+            ]
+        })
+    }
   };
 
   updateLoaded = () => {
