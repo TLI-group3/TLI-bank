@@ -13,6 +13,7 @@ export class Widget extends React.Component {
     super(props);
     this.state = {
       items: 0,
+        tradeIn: '',
       carsJSON: [],
       titles: ["Check your cars"],
       descriptions: ["Do you want a new car?"],
@@ -20,21 +21,37 @@ export class Widget extends React.Component {
         "https://www.generatormix.com/images/thumbs/random-car-model-generator.jpg"
       ],
       loading: false,
-        inputData: {clientIDs: "1402110922112412", tradeInCar: "2018 Ford Focus"},
         success: false
     };
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
   }
+    handleChange(event) {
+        this.setState({tradeIn: event.target.value});
+    }
+
+    handleSubmit(event) {
+        alert('Please wait while we generate the new list with ' + this.state.tradeIn);
+        this.sendRequest()
+        event.preventDefault();
+    }
+  //"2018 Ford Focus"
   sendRequest = () => {
         const requestOptions = {
             method: 'PUT',
             headers: {'Content-type': 'application/json'},
-            body: JSON.stringify(this.state.inputData)
+            body: JSON.stringify({clientIDs: "1402110922112412", tradeInCar: this.state.tradeIn})
         };
         fetch('https://cb.caravantage.tech/generateCars',requestOptions)
             // Handle success
-            .then(result => {
-                this.setState({success: result});
-                console.log(this.state.success)
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error("Something went wrong with the request, Status " + response.status);
+                } else {
+                    alert('Trade in was sent! Please click restart and then Find your Cars!!!');
+                    console.log("Trade In sent");
+                }
+
             })
             .catch(err => console.log('Request Failed', err)); // Catch errors
     }
@@ -77,14 +94,14 @@ export class Widget extends React.Component {
       setTimeout(() => {
           this.updateLoaded();
           console.log("Got cars");
-          this.updateItems(5);} , 5000);
+          this.updateItems(5);} , 1000);
   };
 
   loadCar = () => {
       this.state.carsJSON.map((entry) => {
           return (
               this.state.titles.push(entry.make),
-                  this.state.descriptions.push(entry.model + " " + entry.year),
+                  this.state.descriptions.push(entry.model + " " + entry.year + " For an interest rate of: " + entry.loan.interestRate),
                   this.state.src.push(entry.image)
           );
       });
@@ -92,34 +109,38 @@ export class Widget extends React.Component {
   render() {
     return (
         <div>
-
           <Carousels
             count={this.state.items}
             title={this.state.titles}
             description={this.state.descriptions}
             src={this.state.src}
-            style={{ width: 100 }}
             loading={this.state.loading}
           />
-            <div style={{ margin: "10%" }}>
-                <Input placeholder="Trade In Car" />
+            <div style={{ margin: "10%"}}>
+                <form onSubmit={this.handleSubmit}>
+                <Input placeholder="Trade In Car" value={this.state.tradeIn} onChange={this.handleChange}/>
+                    <div style={{margin: "5%"}}>
+                    <Button type="default" size="small" htmlType="submit" ghost>Submit</Button>
+                    </div>
+                </form>
             </div>
-          <div style={{ margin: "10%" }}>
-            <Button type="primary" size="small"
+          <div style={{ margin: "5%" }}>
+            <Button type="default" size="small"
                 onClick={() => {
                   this.handleClick();
                 }}
-            >
+                    ghost>
               Find your Cars!!!
             </Button>
-            <Button type="primary"
+              <div style={{margin: "5%"}}>
+            <Button type="default"
                 onClick={() => {
                   this.updateItems(0);
-                  this.sendRequest();
                 }}
-            >
+                    ghost>
               Reset
             </Button>
+              </div>
           </div>
         </div>
     );
