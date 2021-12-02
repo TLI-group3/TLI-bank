@@ -20,22 +20,35 @@ export class Widget extends React.Component {
         "https://www.generatormix.com/images/thumbs/random-car-model-generator.jpg"
       ],
       loading: false,
+        inputData: {clientIDs: "1402110922112412", tradeInCar: "2018 Ford Focus"},
+        success: false
     };
   }
+  sendRequest = () => {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(this.state.inputData)
+        };
+        fetch('https://cb.caravantage.tech/generateCars',requestOptions)
+            // Handle success
+            .then(result => {
+                this.setState({success: result});
+                console.log(this.state.success)
+            })
+            .catch(err => console.log('Request Failed', err)); // Catch errors
+    }
 
   getCar = () => {
     const requestOptions = {
-      method: "PUT",
-      body: {"clientIDs":"1402110922112412", "tradeInCar": "2018 Ford Focus"}
+      method: "GET",
     };
 
-
-
-    fetch("https://cb.caravantage.tech/generateCars", requestOptions)
+    fetch("https://cb.caravantage.tech/getCars/?input=1402110922112412", requestOptions)
       // Handle success
       .then((response) => response.json()) // convert to json
       .then((json) => {
-        this.setState({ carsJSON: json.keys});
+        this.setState({ carsJSON: json.cars});
           console.log("Car's fetched, loading unto widget")
           console.log(this.state.carsJSON)
         this.loadCar();
@@ -92,7 +105,7 @@ export class Widget extends React.Component {
                 <Input placeholder="Trade In Car" />
             </div>
           <div style={{ margin: "10%" }}>
-            <Button type="primary"
+            <Button type="primary" size="small"
                 onClick={() => {
                   this.handleClick();
                 }}
@@ -102,6 +115,7 @@ export class Widget extends React.Component {
             <Button type="primary"
                 onClick={() => {
                   this.updateItems(0);
+                  this.sendRequest();
                 }}
             >
               Reset
