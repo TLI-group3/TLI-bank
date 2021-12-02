@@ -4,7 +4,7 @@ import "./widget.module.scss";
 import "antd/dist/antd.css";
 import Carousels from "./carousel";
 import { Button, Input } from 'antd';
-import Buttons from "./button"
+
 
 const e = React.createElement;
 
