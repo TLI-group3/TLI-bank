@@ -45,7 +45,7 @@ class Carousels extends React.Component {
         additionalTransfrom={0}
         arrows
         centerMode={false}
-        containerClass="container"
+        containerClass="carousel-container"
         draggable
         focusOnSelect={false}
         keyBoardControl
