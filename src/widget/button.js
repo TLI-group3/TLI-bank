@@ -8,6 +8,7 @@ class Buttons extends React.Component {
     }
 
 
+
     render() {
         return (
             <Button
@@ -16,5 +17,6 @@ class Buttons extends React.Component {
             </Button>
         );
     }
+    
 }
 export default Buttons;
