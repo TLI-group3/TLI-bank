@@ -6,7 +6,7 @@ const { Meta } = Card;
 const CustomCard = (props) => {
   return (
     <Card
-        style={{ margin: "5px", borderRadius: 12, height: 250 }}
+        style={{ margin: "5px", borderRadius: 12, height: 260 }}
       cover={
         <img alt="CarCard" src={props.src} className={styles.image} />
       }
