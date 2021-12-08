@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CustomCard from "./carSlides";
-import "./widget.module.scss";
+import "./css/widget.module.scss";
 
 class Carousels extends React.Component {
   constructor(props) {
@@ -42,6 +42,7 @@ class Carousels extends React.Component {
   render() {
     return (
       <Carousel
+
         ref={(node) => (this.carouselRef = node)}
         additionalTransfrom={0}
         arrows
