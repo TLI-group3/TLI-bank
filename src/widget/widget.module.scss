@@ -7,6 +7,18 @@ ul.react-multi-carousel-track li:nth-child(1) .ant-card:nth-child(1) {
 }
 ul.react-multi-carousel-track .ant-card {
   margin: 0 5px;
+  transform: scale(0.5);
+  box-sizing: border-box;
+  padding: 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
 
 }
 
@@ -24,5 +36,24 @@ button {
 ul.carousel-container {
   width: 100%;
 
+}
+
+.ant-carousel {
+  box-sizing: border-box;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  border-radius: 25px;
+  padding: 5px 5px 5px 10px;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  max-height: 50%;
+  min-height: 50%;
+}
+
+.image {
+  height: 100px;
 }
 
