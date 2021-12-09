@@ -11,7 +11,7 @@ export class App extends React.Component {
         super(props);
         this.client = new CarClient('https://cb.caravantage.tech');
         this.state ={
-            carsJSON: [],
+            carsJSON: null,
             loading: false,
             items:0
         }
@@ -36,13 +36,18 @@ export class App extends React.Component {
         this.setState({items: length})
     }
 
+    reset = () => {
+        this.updateLength(0);
+        this.setState({carsJSON: null});
+    }
+
     render(){
         console.log(this.state.carsJSON)
         return(
         <Widget
         findCarsClicked = {this.findCarsClicked}
         addTradeInClicked ={this.addTradeInClicked}
-        updateLength ={this.updateLength}
+        reset ={this.reset}
         carsJSON = {this.state.carsJSON}
         loading = {this.state.loading}
         length ={this.state.items}>

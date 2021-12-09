@@ -12,7 +12,7 @@ export class Widget extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-        tradeIn:''
+        tradeIn:'',
     }
 
       this.handleChange = this.handleChange.bind(this);
@@ -39,13 +39,14 @@ export class Widget extends React.Component {
       var cars = this.loadCar();
     return (
         <div>
-          <Carousels
-            count={this.props.length}
-            title={cars.titles}
-            description={cars.descriptions}
-            src={cars.src}
-            loading={this.props.loading}
-          />
+            {this.props.carsJSON &&
+                <Carousels
+                count={this.props.length}
+                title={cars.titles}
+                description={cars.descriptions}
+                src={cars.src}
+                loading={this.props.loading}
+              />}
             <div style={{ margin: "10%"}}>
                 <form onSubmit={this.props.addTradeInClicked}>
                 <Input placeholder="TradeIn VIN Number" value={this.state.tradeIn} onChange={this.handleChange}/>
@@ -65,7 +66,7 @@ export class Widget extends React.Component {
               <div style={{margin: "5%"}}>
             <Button type="default"
                 onClick={() => {
-                    this.props.updateLength(0);
+                    this.props.reset();
                 }}
                     ghost>
               Reset
