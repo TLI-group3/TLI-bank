@@ -27,10 +27,8 @@ export class App extends React.Component {
         this.setState({loading: true, items: 0});
         var carsJson = await cars;
         this.setState({carsJSON: carsJson});
-        setTimeout(() => {
-            this.setState({loading:false, items: 5});
-            console.log("Got cars");} , 1000);
-    };
+        this.setState({loading:false, items: 5});
+        console.log("Got cars");};
 
     updateLength = (length) => {
         this.setState({items: length})
