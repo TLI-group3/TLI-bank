@@ -14,7 +14,6 @@ export class Widget extends React.Component {
     this.state ={
         tradeIn:'',
     }
-
       this.handleChange = this.handleChange.bind(this);
   }
     handleChange(event) {
@@ -23,11 +22,9 @@ export class Widget extends React.Component {
 
 
   loadCar = () => {
-      var titles= ["Check your cars"];
-      var descriptions= ["Do you want a new car?"];
-      var src= [
-              "https://www.generatormix.com/images/thumbs/random-car-model-generator.jpg"
-          ];
+      var titles= [];
+      var descriptions= [];
+      var src= [];
       this.props.carsJSON?.map((entry) => {
               titles.push(entry.make);
               descriptions.push(<><div>{entry.model}</div> <div>{entry.year}</div> <div>{`For an interest rate of:`}</div> <div>{entry.loan.interestRate}</div></>);
