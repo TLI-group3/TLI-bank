@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./widget.module.scss";
 import "antd/dist/antd.css";
 import Carousels from "./carousel";
 import { Button, Input } from 'antd';
+import "./css/widget.module.scss";
 
 
 const e = React.createElement;
@@ -31,7 +31,6 @@ export class Widget extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Please wait while we generate the new list with ' + this.state.tradeIn);
         this.sendRequest()
         event.preventDefault();
     }
@@ -48,7 +47,6 @@ export class Widget extends React.Component {
                 if(!response.ok) {
                     throw new Error("Something went wrong with the request, Status " + response.status);
                 } else {
-                    alert('Trade in was sent! Please click restart and then Find your Cars!!!');
                     console.log("Trade In sent");
                 }
 
@@ -110,7 +108,7 @@ export class Widget extends React.Component {
       this.state.carsJSON.map((entry) => {
           return (
               this.state.titles.push(entry.make),
-                  this.state.descriptions.push(entry.model + " " + entry.year + " For an interest rate of: " + entry.loan.interestRate),
+                  this.state.descriptions.push(<><div>{entry.model}</div> <div>{entry.year}</div> <div>{`For an interest rate of:`}</div> <div>{entry.loan.interestRate}</div></>),
                   this.state.src.push(entry.image)
           );
       });
@@ -127,9 +125,9 @@ export class Widget extends React.Component {
           />
             <div style={{ margin: "10%"}}>
                 <form onSubmit={this.handleSubmit}>
-                <Input placeholder="Trade In Car" value={this.state.tradeIn} onChange={this.handleChange}/>
+                <Input placeholder="Trade In Car VIN Number" value={this.state.tradeIn} onChange={this.handleChange}/>
                     <div style={{margin: "5%"}}>
-                    <Button type="default" size="small" htmlType="submit" ghost>Submit</Button>
+                    <Button type="default" size="small" htmlType="submit" ghost>Add Trade In</Button>
                     </div>
                 </form>
             </div>
@@ -156,5 +154,3 @@ export class Widget extends React.Component {
   }
 }
 
-const domContainer = document.querySelector("#widget-container");
-ReactDOM.render(e(Widget), domContainer);
