@@ -48,19 +48,18 @@ export class Widget extends React.Component {
               />}
             {!this.props.carsJSON && <div>
                 <form onSubmit={this.props.addTradeInClicked} className={styles.input}>
-                <Input placeholder="Trade-in VIN# (opt)" value={this.state.tradeIn} onChange={this.handleChange}/>
+                    <Input placeholder="Trade-in VIN# (opt)" value={this.state.tradeIn} onChange={this.handleChange}/>
                     <div style={{marginLeft: "2%"}}>
-                    <Button className={styles.add} type="default" size="small" htmlType="submit">&#65291;</Button>
+                        <Button className={styles.add} type="default" size="small" htmlType="submit">&#65291;</Button>
                     </div>
                 </form>
             </div>}
           <div style={{ margin: "5%" }}>
-              {!this.props.carsJSON && <Button type="default" size="small"
+              {!this.props.carsJSON && <Button className={styles.showMe} type="default" size="small"
                 onClick={async() => {
                   this.props.findCarsClicked();
-                }}
-                    ghost>
-              Show me
+                }}>
+              Show my cars
             </Button>}
               <div style={{margin: "5%"}}>
                   {this.props.carsJSON &&
