@@ -35,6 +35,9 @@ export class Widget extends React.Component {
               descriptions.push(<><p>For only ${number.toLocaleString()} per month, you can afford a {carName}! With an interest rate of {entry.loan.interestRate}%</p></>);
               src.push(entry.image);
       });
+      titles.push("Interested? Call Us!");
+      descriptions.push(<><p>Book an appointment with us to discuss potential car purchases. Dail at +1 (647) XXX-XXXX or book an appointment via your branch.</p></>)
+      src.push("");
       return{titles:titles, descriptions: descriptions, src: src}
   }
   render() {

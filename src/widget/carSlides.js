@@ -4,10 +4,12 @@ import styles from "./css/widget.module.scss";
 
 const { Meta } = Card;
 const CustomCard = (props) => {
+  let top = props.src ? -9 : 0;
+  let styling = { top: top, borderRadius: 12, height: 260 };
   return (
     <Card
-        style={{ top: -9, borderRadius: 12, height: 260 }}
-      cover={
+        style={styling}
+      cover={props.src &&
         <img alt="CarCard" src={props.src} className={styles.image} />
       }
       hoverable={true}
