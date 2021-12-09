@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 import Carousels from "./carousel";
 import { Button, Input } from 'antd';
-import "./css/widget.module.scss";
+import styles from "./css/widget.module.scss";
 
 
 const e = React.createElement;
@@ -35,7 +35,9 @@ export class Widget extends React.Component {
   render() {
       var cars = this.loadCar();
     return (
-        <div>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Looking for a new car?</h2>
+            {!this.props.carsJSON && <p className={styles.content}>We can help you find affordable cars with the click of a button!</p>}
             {this.props.carsJSON &&
                 <Carousels
                 count={this.props.length}
@@ -58,7 +60,7 @@ export class Widget extends React.Component {
                   this.props.findCarsClicked();
                 }}
                     ghost>
-              Find your Cars!!!
+              Show me
             </Button>
               <div style={{margin: "5%"}}>
             <Button type="default"

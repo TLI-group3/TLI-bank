@@ -31,13 +31,6 @@ body {
   margin: 15px;
 }
 
-#widgets-container {
-  background-color: #3079BC;
-  margin: 15px;
-  border-radius: 25px;
-  padding: 10px 10px 10px 10px;
-}
-
 .note {
   border: 1px solid lightgrey;
   margin: 20px 10px 20px 10px;
