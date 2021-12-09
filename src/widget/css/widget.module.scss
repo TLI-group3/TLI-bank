@@ -3,7 +3,9 @@
   text-align: center;
 }
 ul.react-multi-carousel-track li:nth-child(1) .ant-card:nth-child(1) {
-  margin-left: 50px;
+  margin: 50px;
+  max-height: 20px;
+  border-radius: 12px !important;
 }
 ul.react-multi-carousel-track .ant-card {
   margin: 0 5px;
@@ -18,9 +20,10 @@ ul.react-multi-carousel-track .ant-card {
   font-feature-settings: 'tnum';
   position: relative;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 12px !important;
 
 }
+
 
 button {
   display: inline-block;
@@ -33,27 +36,22 @@ button {
 }
 
 
-ul.carousel-container {
+.carousel-container {
   width: 100%;
+  border-radius: 12px !important;
 
-}
-
-.ant-carousel {
-  box-sizing: border-box;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  font-variant: tabular-nums;
-  border-radius: 25px;
-  padding: 5px 5px 5px 10px;
-  line-height: 1.5715;
-  list-style: none;
-  font-feature-settings: 'tnum';
-  max-height: 50%;
-  min-height: 50%;
 }
 
 .image {
   height: 100px;
+  border-radius: 12px !important;
 }
+
+.para{
+  margin: 0;
+  font-size: medium;
+}
+
+
+
 
