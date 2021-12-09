@@ -35,11 +35,9 @@ button {
   min-width: 40px;
 }
 
-
 .carousel-container {
   width: 100%;
   border-radius: 12px !important;
-
 }
 
 .image {
@@ -52,6 +50,60 @@ button {
   font-size: medium;
 }
 
+.title {
+  color: white;
+  text-align: left;
+  font-size: 1.35em;
+}
 
+.container {
+  background-color: #3079BC;
+  margin: 20px 10px 20px 10px;
+  border-radius: 12px;
+  padding: 15px;
+}
 
+.content {
+  color: white;
+  text-align: left;
+}
 
+.input {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+}
+
+.add {
+  height: 100%;
+  line-height: 100%;
+  font-size: 2em;
+  border: none;
+  background-color: #F5A55A;
+  padding-bottom: 5px;
+  width: 5%;
+}
+
+.buttons {
+  border-radius: 5px;
+  background-color: #F5A55A;
+  color: white;
+  border: none;
+  font-size: 1.1em;
+  height: fit-content;
+  padding: 3px 7px 3px 7px;
+  margin-top: 5%;
+}
+
+.reset {
+  border-radius: 5px;
+  background-color: #F5A55A;
+  color: white;
+  border: none;
+  font-size: 1.1em;
+  height: fit-content;
+  padding: 3px 7px 3px 7px;
+  margin: 5%;
+  position: relative;
+  top: -80px;
+}

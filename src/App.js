@@ -11,29 +11,32 @@ export class App extends React.Component {
         super(props);
         this.client = new CarClient('https://cb.caravantage.tech');
         this.state ={
-            carsJSON: [],
+            carsJSON: null,
             loading: false,
             items:0
         }
     }
+
     addTradeInClicked = (event) =>{
         this.client.sendRequest(event.target.value, "1402110922112412")
         event.preventDefault();
+    };
 
-};
     findCarsClicked = async() => {
         var cars = this.client.getCars();
         this.setState({loading: true, items: 0});
         var carsJson = await cars;
         this.setState({carsJSON: carsJson});
-        setTimeout(() => {
-            this.setState({loading:false, items: 5});
-            console.log("Got cars");} , 1000);
-
-    };
+        this.setState({loading:false, items: 4});
+        console.log("Got cars");};
 
     updateLength = (length) => {
         this.setState({items: length})
+    }
+
+    reset = () => {
+        this.updateLength(0);
+        this.setState({carsJSON: null});
     }
 
     render(){
@@ -42,7 +45,7 @@ export class App extends React.Component {
         <Widget
         findCarsClicked = {this.findCarsClicked}
         addTradeInClicked ={this.addTradeInClicked}
-        updateLength ={this.updateLength}
+        reset ={this.reset}
         carsJSON = {this.state.carsJSON}
         loading = {this.state.loading}
         length ={this.state.items}>
