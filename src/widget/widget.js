@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import Carousels from "./carousel";
 import { Button, Input } from 'antd';
 import styles from "./css/widget.module.scss";
+import WidgetHome from "./WidgetHome";
 
 
 const e = React.createElement;
@@ -40,8 +41,12 @@ export class Widget extends React.Component {
       var cars = this.loadCar();
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>Looking for a new car?</h2>
-            {!this.props.carsJSON && <p className={styles.content}>We can help you find affordable cars with the click of a button!</p>}
+            {!this.props.carsJSON && <WidgetHome
+                addTradeInClicked={this.props.addTradeInClicked}
+                tradeIn={this.state.tradeIn}
+                handleChange={this.handleChange}
+                findCarsClicked={this.props.findCarsClicked}
+            />}
             {this.props.carsJSON &&
                 <Carousels
                 count={this.props.length}
@@ -50,23 +55,7 @@ export class Widget extends React.Component {
                 src={cars.src}
                 loading={this.props.loading}
               />}
-            {!this.props.carsJSON && <div>
-                <form onSubmit={this.props.addTradeInClicked} className={styles.input}>
-                    <Input placeholder="Trade-in VIN# (opt)" value={this.state.tradeIn} onChange={this.handleChange}/>
-                    <div style={{marginLeft: "2%"}}>
-                        <Button className={styles.add} type="default" size="small" htmlType="submit">&#65291;</Button>
-                    </div>
-                </form>
-            </div>}
-          <div style={{ margin: "5%" }}>
-              {!this.props.carsJSON && <Button className={styles.showMe} type="default" size="small"
-                onClick={async() => {
-                  this.props.findCarsClicked();
-                }}>
-              Show my cars
-            </Button>}
-              <div style={{margin: "5%"}}>
-                  {this.props.carsJSON &&
+            {this.props.carsJSON &&
                   <Button type="default"
                     onClick={() => {
                         this.props.reset();
@@ -74,8 +63,6 @@ export class Widget extends React.Component {
                         ghost>
                   Reset
                 </Button>}
-              </div>
-          </div>
         </div>
     );
   }
