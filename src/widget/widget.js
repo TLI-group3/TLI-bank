@@ -40,7 +40,7 @@ export class Widget extends React.Component {
   render() {
       var cars = this.loadCar();
     return (
-        <div className={styles.container}>
+        <div>
             {!this.props.carsJSON && <WidgetHome
                 addTradeInClicked={this.props.addTradeInClicked}
                 tradeIn={this.state.tradeIn}
@@ -48,21 +48,18 @@ export class Widget extends React.Component {
                 findCarsClicked={this.props.findCarsClicked}
             />}
             {this.props.carsJSON &&
-                <Carousels
-                count={this.props.length}
-                title={cars.titles}
-                description={cars.descriptions}
-                src={cars.src}
-                loading={this.props.loading}
-              />}
-            {this.props.carsJSON &&
-                  <Button type="default"
-                    onClick={() => {
-                        this.props.reset();
-                    }}
-                        ghost>
-                  Reset
-                </Button>}
+                <React.Fragment>
+                    <Carousels
+                        count={this.props.length}
+                        title={cars.titles}
+                        description={cars.descriptions}
+                        src={cars.src}
+                        loading={this.props.loading}
+                      />
+                    <Button className={styles.reset} type="default" onClick={() => {this.props.reset();}}>
+                        Reset
+                    </Button>
+                </React.Fragment>}
         </div>
     );
   }

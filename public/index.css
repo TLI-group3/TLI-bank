@@ -138,3 +138,22 @@ th {
   text-align: left;
   padding: 15px !important;
 }
+
+.ant-card {
+  background-color: #3079BC !important;
+  color: white !important;
+}
+
+.ant-card-meta-title {
+  color: white !important;
+}
+
+.ant-card-cover {
+  margin: 10px;
+  position: relative;
+  top: 10px;
+}
+
+.react-multi-carousel-list {
+  margin: 20px 10px 20px 10px !important;
+}
