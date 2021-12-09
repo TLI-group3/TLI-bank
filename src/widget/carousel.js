@@ -42,7 +42,6 @@ class Carousels extends React.Component {
   render() {
     return (
       <Carousel
-
         ref={(node) => (this.carouselRef = node)}
         additionalTransfrom={0}
         arrows
