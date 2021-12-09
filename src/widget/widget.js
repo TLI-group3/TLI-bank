@@ -27,11 +27,11 @@ export class Widget extends React.Component {
       var src= [];
       this.props.carsJSON?.map((entry) => {
                 var number= Math.floor(parseInt(entry.loan.loanAmount)/parseInt(entry.loan.loanTerm));
-              titles.push(entry.make);
-              descriptions.push(<><div>{entry.model}{entry.year}</div>
-                  <div style={{fontSize:11}}>{`Monthly payment: `}</div><div>{number}</div>
-                  <div style={{fontSize:11}}>{`For an interest rate of:`}</div>
-                  <div>{entry.loan.interestRate}</div></>);
+                let make = entry.make.charAt(0).toUpperCase() + entry.make.slice(1);
+                let model = entry.model.charAt(0).toUpperCase() + entry.model.slice(1);
+                let carName = entry.year + " " + make + " " + model;
+              titles.push(carName);
+              descriptions.push(<><p>For only ${number.toLocaleString()} per month, you can afford a {carName}! With an interest rate of {entry.loan.interestRate}%</p></>);
               src.push(entry.image);
       });
       return{titles:titles, descriptions: descriptions, src: src}
