@@ -16,11 +16,12 @@ export class App extends React.Component {
             items:0
         }
     }
+
     addTradeInClicked = (event) =>{
         this.client.sendRequest(event.target.value, "1402110922112412")
         event.preventDefault();
+    };
 
-};
     findCarsClicked = async() => {
         var cars = this.client.getCars();
         this.setState({loading: true, items: 0});
@@ -29,7 +30,6 @@ export class App extends React.Component {
         setTimeout(() => {
             this.setState({loading:false, items: 5});
             console.log("Got cars");} , 1000);
-
     };
 
     updateLength = (length) => {
