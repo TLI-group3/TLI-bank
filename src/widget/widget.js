@@ -48,7 +48,7 @@ export class Widget extends React.Component {
               />}
             {!this.props.carsJSON && <div>
                 <form onSubmit={this.props.addTradeInClicked} className={styles.input}>
-                <Input placeholder="Insert Trade-in VIN#" value={this.state.tradeIn} onChange={this.handleChange}/>
+                <Input placeholder="Trade-in VIN# (opt)" value={this.state.tradeIn} onChange={this.handleChange}/>
                     <div style={{marginLeft: "2%"}}>
                     <Button className={styles.add} type="default" size="small" htmlType="submit">&#65291;</Button>
                     </div>
