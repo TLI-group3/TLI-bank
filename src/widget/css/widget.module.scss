@@ -69,3 +69,19 @@ button {
   color: white;
   text-align: left;
 }
+
+.input {
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+}
+
+.add {
+  height: 100%;
+  line-height: 100%;
+  font-size: 2em;
+  border: none;
+  background-color: #F5A55A;
+  padding-bottom: 5px;
+  width: 10%;
+}

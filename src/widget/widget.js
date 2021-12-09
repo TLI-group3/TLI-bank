@@ -46,11 +46,11 @@ export class Widget extends React.Component {
                 src={cars.src}
                 loading={this.props.loading}
               />}
-            {!this.props.carsJSON && <div style={{ margin: "10%"}}>
-                <form onSubmit={this.props.addTradeInClicked}>
-                <Input placeholder="TradeIn VIN Number" value={this.state.tradeIn} onChange={this.handleChange}/>
-                    <div style={{margin: "5%"}}>
-                    <Button type="default" size="small" htmlType="submit" ghost>Add Trade In</Button>
+            {!this.props.carsJSON && <div>
+                <form onSubmit={this.props.addTradeInClicked} className={styles.input}>
+                <Input placeholder="Insert Trade-in VIN#" value={this.state.tradeIn} onChange={this.handleChange}/>
+                    <div style={{marginLeft: "2%"}}>
+                    <Button className={styles.add} type="default" size="small" htmlType="submit">&#65291;</Button>
                     </div>
                 </form>
             </div>}
