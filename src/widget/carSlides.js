@@ -3,6 +3,12 @@ import { Card } from "antd";
 import styles from "./css/widget.module.scss";
 
 const { Meta } = Card;
+/**
+ * Function that builds a custom card react object
+ * @param props
+ * @return {JSX.Element}
+ * @constructor
+ */
 const CustomCard = (props) => {
   let top = props.src ? -9 : 0;
   let styling = { top: top, borderRadius: 12, height: 260 };

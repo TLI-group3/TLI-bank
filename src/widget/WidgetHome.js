@@ -3,6 +3,13 @@ import styles from "./css/widget.module.scss";
 import {Button, Input} from "antd";
 import Proptypes from 'prop-types';
 
+/**
+ * Builds basic JSX.Element that represents first card on widget
+ * @param props
+ * @return {JSX.Element}
+ * @constructor
+ */
+
 export default function WidgetHome(props) {
     return (
         <div className={styles.container}>
