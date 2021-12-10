@@ -1,4 +1,6 @@
-
+/**
+ * Class that stores functions for API access
+ */
 export class CarClient{
     constructor(api) {
         this.api = api;
@@ -7,6 +9,8 @@ export class CarClient{
 
     /**
      * Sends a PUT request to back-end containing the input data
+     * @param {string} tradeIn - VIN number of trade in car
+     * @param {string} clientID - Number ID of client from bank
      */
     sendRequest = (tradeIn, clientID) => {
         const requestOptions = {
@@ -29,6 +33,8 @@ export class CarClient{
 
     /**
      * Sends a GET request to back-end containing the input data
+     * @async
+     * @return json.cars
      */
 
     getCars = async() => {

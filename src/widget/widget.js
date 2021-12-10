@@ -5,10 +5,14 @@ import Carousels from "./carousel";
 import { Button, Input } from 'antd';
 import styles from "./css/widget.module.scss";
 import WidgetHome from "./WidgetHome";
+import Proptypes, {bool} from 'prop-types';
 
 
 const e = React.createElement;
 
+/**
+ * Widget class builds architecture
+ */
 export class Widget extends React.Component {
   constructor(props) {
     super(props);
@@ -17,11 +21,19 @@ export class Widget extends React.Component {
     }
       this.handleChange = this.handleChange.bind(this);
   }
+
+    /**
+     * Change tradeIn value using the inputted string
+     * @param event
+     */
     handleChange(event) {
         this.setState({tradeIn: event.target.value});
     }
 
-
+    /**
+     * Loads values from the carsJSON object into separate variables
+     * @return {{src: *[], titles: *[], descriptions: *[]}}
+     */
   loadCar = () => {
       var titles= [];
       var descriptions= [];
@@ -67,4 +79,10 @@ export class Widget extends React.Component {
     );
   }
 }
-
+Widget.propTypes = {
+    carsJSON: Proptypes.any,
+    loading: Proptypes.bool,
+    length: Proptypes.number,
+    findCarsClicked: Proptypes.func,
+    addTradeInClicked: Proptypes.func
+}

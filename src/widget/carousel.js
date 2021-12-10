@@ -3,12 +3,21 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CustomCard from "./carSlides";
 import styles from "./css/widget.module.scss";
+import Proptypes, {bool, number, string} from 'prop-types';
 
+/**
+ * Builds carousel which contains CustomCard items
+ */
 class Carousels extends React.Component {
   constructor(props) {
     super();
     this.props = props;
   }
+
+  /**
+   * Renders individual CustomCard items
+   * @return {*[]}
+   */
   renderItems() {
     let cards = [];
     for (let i = 0; i <= this.props.count; i++) {
@@ -24,6 +33,11 @@ class Carousels extends React.Component {
     }
     return cards;
   }
+
+  /**
+   * Checks if value of count is the same
+   * @param prevProps
+   */
   componentDidUpdate(prevProps) {
     if (this.props.count !== prevProps.count) {
       this.carouselRef.setState({
@@ -33,6 +47,13 @@ class Carousels extends React.Component {
       });
     }
   }
+
+  /**
+   * Check if value of count is the same and if it's different updates card rendering
+   * @param nextProps
+   * @param nextState
+   * @return {boolean}
+   */
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.count !== nextProps.count) {
       return true;
@@ -78,5 +99,14 @@ class Carousels extends React.Component {
       </Carousel>
     );
   }
+}
+
+Carousels.protoTypes = {
+  count: Proptypes.arrayOf(number),
+  title:Proptypes.arrayOf(string),
+  description:Proptypes.arrayOf(string),
+  loading: Proptypes.bool,
+  src:Proptypes.arrayOf(string),
+
 }
 export default Carousels;
